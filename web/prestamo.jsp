@@ -4,6 +4,7 @@
     Author     : DAW203
 --%>
 
+<%@page import="modelo.Cuota"%>
 <%@page import="modelo.Prestamo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -57,6 +58,30 @@
             <% if(importePrestamo != ""){ %>
                 <h1>Importe Total del Préstamo:<%=importePrestamo%></h1>
             <% } %>
+            
+            <table border="1">
+                <% ArrayList<Cuota> cuotas = (ArrayList<Cuota>) request.getAttribute("cuotas");
+                if (cuotas != null) { %>
+                <tr>
+                    <th>NºCuota</th>
+                    <th>Importe</th>
+                    <th>Capital</th>
+                    <th>Interés</th>
+
+                    <%
+                        for (int i=0; i<cuotas.size(); i++) {
+                            Cuota cuot = cuotas.get(i);
+                    %>
+
+                <tr>
+                    <td><%=cuotas.get(i).numeroCuota%></td>
+                    <td><%=cuotas.get(i).importeCuota%></td>
+                    <td><%=cuotas.get(i).getCapital()%></td>
+                    <td><%=cuotas.get(i).intereses%></td>
+                    
+                    <% } %>
+                    <% } %>
+            </table>
         </form>
             
     </body>

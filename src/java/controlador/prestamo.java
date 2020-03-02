@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Cuota;
 import modelo.Prestamo;
 import modelo.Utilidades;
 
@@ -107,6 +108,9 @@ public class prestamo extends HttpServlet {
 
         Prestamo prest = new Prestamo(ctd, inte, tie);
         request.setAttribute("prestamo", prest);
+        
+        ArrayList<Cuota> cuotas = Utilidades.generaListaCuotas(tie, prest.getImportePrestamo());
+        request.setAttribute("cuotas", cuotas);
         
         request.getRequestDispatcher("prestamo.jsp").forward(request, response);
     }

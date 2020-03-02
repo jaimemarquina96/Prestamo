@@ -22,10 +22,6 @@ public class Prestamo {
         this.importePrestamo = importeTotalPrestamo(cantidad, interes, tiempo);
     }
     
-    public double importeTotalPrestamo(double capital, double interes, int tiempo ){
-        double interesSimple = (capital*interes*tiempo)/1200;
-        return interesSimple + capital;
-    }
 
     public double getCantidad() {
         return cantidad;
@@ -33,6 +29,11 @@ public class Prestamo {
 
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
+    }
+    
+    public double importeTotalPrestamo(double capital, double interes, int tiempo){
+        double interesSimple = (capital*interes*tiempo) / 1200;
+        return interesSimple + capital;
     }
 
     public double getInteres() {
